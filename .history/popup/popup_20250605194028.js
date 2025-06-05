@@ -29,7 +29,6 @@ const elements = {
   showInPageQR: document.getElementById('showInPageQR'),
   tabButtons: document.querySelectorAll('.tab-button'),
   tabContents: document.querySelectorAll('.tab-content'),
-  qrReadLink: document.getElementById('qrReadLink'),
   historyList: document.getElementById('historyList'),
   historyEmpty: document.getElementById('historyEmpty'),
   clearHistory: document.getElementById('clearHistory'),
@@ -809,19 +808,21 @@ function closeImagePreview() {
 function showQRCodeResult(text) {
   if (!text) return;
   
-  // Preencher texto e estilizar como link se for URL
-  const isUrl = text.match(/^https?:\/\//i);
+  // Preencher texto
+  elements.qrReadText.textContent = text;
   
+  // Verificar se é URL
+  const isUrl = text.match(/^https?:\/\//i);
+  elements.openQrResult.style.display = isUrl ? 'flex' : 'none';
+  
+  // Configurar link clicável se for URL
+  const qrReadLink = document.getElementById('qrReadLink');
   if (isUrl) {
-    elements.qrReadText.innerHTML = `<a href="${text}" target="_blank" style="color: #0066cc; text-decoration: underline;">${text}</a>`;
-    elements.qrReadLink.href = text;
-    elements.qrReadLink.textContent = 'Abrir em nova aba';
-    elements.qrReadLink.style.display = 'block';
-    elements.openQrResult.style.display = 'flex';
+    qrReadLink.href = text;
+    qrReadLink.textContent = 'Abrir link: ' + text;
+    qrReadLink.style.display = 'block';
   } else {
-    elements.qrReadText.textContent = text;
-    elements.qrReadLink.style.display = 'none';
-    elements.openQrResult.style.display = 'none';
+    qrReadLink.style.display = 'none';
   }
   
   // Mostrar resultado
