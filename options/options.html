@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Opções do Gerador de QR Code</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Configurações do Gerador de QR Code</h1>
+    </header>
+
+    <main>
+      <section class="settings-section">
+        <h2>Preferências</h2>
+        
+        <div class="form-group">
+          <label for="default-size">Tamanho padrão do QR Code:</label>
+          <div class="range-container">
+            <input type="range" id="default-size" min="100" max="500" step="10" value="200">
+            <span id="size-value">200px</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="default-color">Cor padrão do QR Code:</label>
+          <input type="color" id="default-color" value="#000000">
+        </div>
+        
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="auto-copy" checked>
+            Copiar automaticamente para a área de transferência ao gerar
+          </label>
+        </div>
+        
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="show-notification" checked>
+            Mostrar notificação quando o QR Code for gerado
+          </label>
+        </div>
+      </section>
+      
+      <section class="history-section">
+        <h2>Gerenciar Histórico</h2>
+        
+        <div class="history-controls">
+          <button id="clear-history" class="btn danger">Limpar Histórico</button>
+          <button id="export-history" class="btn">Exportar Histórico</button>
+          <button id="import-history" class="btn">Importar Histórico</button>
+          <input type="file" id="import-file" accept=".json" style="display: none;">
+        </div>
+        
+        <div class="history-stats">
+          <p>Total de itens no histórico: <span id="history-count">0</span></p>
+          <p>Espaço utilizado: <span id="storage-usage">0 KB</span></p>
+        </div>
+      </section>
+      
+      <section class="about-section">
+        <h2>Sobre</h2>
+        <p>Versão: 1.0.0</p>
+        <p>Desenvolvido por <a href="#" id="developer-link">Sua Empresa</a></p>
+        <p>© 2025 Gerador de QR Code. Todos os direitos reservados.</p>
+      </section>
+    </main>
+    
+    <footer>
+      <button id="save-btn" class="btn primary">Salvar Configurações</button>
+      <button id="reset-btn" class="btn">Redefinir Padrões</button>
+    </footer>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

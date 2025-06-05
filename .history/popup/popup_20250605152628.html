@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+  <script defer src="popup.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>QR Code Generator</h1>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="generator">Generator</button>
+        <button class="tab-button" data-tab="history">History</button>
+      </div>
+    </header>
+
+    <div class="tab-content active" id="generator-tab">
+      <div class="input-group">
+        <textarea id="qr-text" placeholder="Enter text or URL"></textarea>
+        <div class="controls">
+          <label>
+            Color:
+            <input type="color" id="qr-color" value="#000000">
+          </label>
+          <label>
+            Size:
+            <input type="range" id="qr-size" min="100" max="500" value="200">
+            <span id="size-value">200px</span>
+          </label>
+        </div>
+      </div>
+      <div id="qrcode"></div>
+      <div class="actions">
+        <button id="download-btn" class="btn">Download</button>
+        <button id="copy-btn" class="btn">Copy</button>
+      </div>
+    </div>
+
+    <div class="tab-content" id="history-tab">
+      <div class="search-container">
+        <input type="text" id="search-history" placeholder="Search history">
+      </div>
+      <ul id="history-list"></ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de QR Code</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="../libs/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>QR Code Generator</h1>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="generator">Gerador</button>
+        <button class="tab-button" data-tab="history">Histórico</button>
+      </div>
+    </header>
+
+    <div class="tab-content" id="generator-tab">
+      <div class="input-group">
+        <textarea id="qr-text" placeholder="Digite o texto ou URL para o QR Code" rows="4"></textarea>
+      </div>
+      
+      <div class="quick-actions">
+        <button id="current-url" class="btn">URL Atual</button>
+        <button id="selected-text" class="btn">Texto Selecionado</button>
+      </div>
+
+      <div class="customization">
+        <h3>Personalização</h3>
+        <div class="form-group">
+          <label for="qr-color">Cor do QR Code:</label>
+          <input type="color" id="qr-color" value="#000000">
+        </div>
+        <div class="form-group">
+          <label for="qr-size">Tamanho (px):</label>
+          <input type="range" id="qr-size" min="100" max="500" value="200">
+          <span id="size-value">200px</span>
+        </div>
+      </div>
+
+      <div class="preview">
+        <h3>Visualização</h3>
+        <div id="qrcode"></div>
+        <div class="actions">
+          <button id="download-btn" class="btn primary">Download</button>
+          <button id="copy-btn" class="btn">Copiar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="history-tab">
+      <div class="search-box">
+        <input type="text" id="search-history" placeholder="Buscar no histórico...">
+      </div>
+      <div id="history-list" class="history-list">
+        <!-- Histórico será carregado aqui -->
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
